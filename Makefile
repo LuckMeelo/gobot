@@ -14,6 +14,7 @@ fclean: clean
 clean:
 	$(RM) src/__pycache__
 	$(RM) tests/__pycache__
+	$(RM) .pytest_cache
 
 re: fclean re
 
