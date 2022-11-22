@@ -1,10 +1,3 @@
-##
-## PROJECT 2022
-## gobot
-## File description:
-## Makefile
-##
-
 NAME = pbrain-gomoku-ai
 
 RM = rm -rf
@@ -19,8 +12,12 @@ fclean: clean
 	$(RM) $(NAME)
 
 clean:
-	$(RM) __pycache__
+	$(RM) src/__pycache__
+	$(RM) tests/__pycache__
 
 re: fclean re
+
+run_tests:
+	pytest
 
 .PHONY: all fclean clean re
