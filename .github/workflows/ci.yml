@@ -11,8 +11,8 @@ jobs:
       - name: setup
         uses: actions/setup-python@v4
 
+      - uses: actions/checkout@v3
       - name: build
-        uses: actions/checkout@v3
         run: make && make clean && make fclean && make re
 
   test:
