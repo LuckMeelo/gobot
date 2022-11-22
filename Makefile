@@ -17,7 +17,7 @@ clean:
 
 re: fclean re
 
-run_tests:
+tests_run:
 	pytest
 
 .PHONY: all fclean clean re
