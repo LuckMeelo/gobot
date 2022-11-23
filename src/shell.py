@@ -6,6 +6,10 @@ class Shell:
         self.commands = dict()
         self.currentCmd = None
         self.currentArgs = []
+        self.unknown_cmd = lambda: print("")
+
+    def on_unknown(self, procedure: callable) -> None:
+        self.unknown_cmd = procedure
 
     def start(self) -> None:
         self.running = True
@@ -13,17 +17,16 @@ class Shell:
     def on(self, command: str, procedure: callable) -> None:
         self.commands[command] = procedure
 
-    def getInput(self) -> None:
-        tmp = input()
+    def getInput(self, case_handle: callable = lambda s: s) -> None:
+        tmp = case_handle(input())
         if (not tmp):
-            self.clear()
+            self.unknown_cmd()
             return
         words = tmp.split()
         self.currentCmd = words[0]
         self.currentArgs = words[1:]
 
-    def dumb(self) -> None:
-        print("dumb")
+    def dump(self) -> None:
         print(self.currentCmd)
         print(self.currentArgs)
 
@@ -33,7 +36,7 @@ class Shell:
         if self.currentCmd in self.commands:
             self.commands[self.currentCmd]()
         else:
-            print("UNKNOWN")
+            self.unknown_cmd()
 
     def clear(self) -> None:
         self.currentCmd = None

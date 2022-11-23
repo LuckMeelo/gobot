@@ -2,8 +2,18 @@
 
 from enum import Enum
 from shell import Shell
+import json
 
 sh = Shell()
+brainInfos = dict()
+
+
+def loadBrainInfos() -> None:
+    global brainInfos
+    f = open("about.json")
+    content = json.load(f)
+    for key in content:
+        brainInfos[key] = content[key]
 
 
 class CellValue(Enum):
@@ -12,7 +22,7 @@ class CellValue(Enum):
     OPPONENT = 2
 
 
-brain_infos = {
+brain_settings = {
     # time limit for each move (milliseconds, 0=play as fast as possible)
     "timeout_turn": 0,
     # time limit of a whole match (milliseconds, 0=no limit)

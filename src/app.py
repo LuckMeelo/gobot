@@ -2,28 +2,29 @@
 
 from bots.ibot import IBot
 from bots.random.bot import RandomBot
-from config import sh
+from config import sh, loadBrainInfos
 
 from commands import mandatory
-
-running = False
+from commands import sentbybrain
 
 
 def setup() -> None:
-    global running
-    sh.on("test", mandatory.test)
+    loadBrainInfos()
+    sh.on_unknown(sentbybrain.on_unknown)
     sh.on("END", mandatory.end)
+    sh.on("ABOUT", mandatory.about)
 
 
 def run() -> None:
     sh.start()
     while sh.running:
         try:
-            sh.getInput()
+            sh.getInput(case_handle=lambda s: s.upper())
         except EOFError:
-            print("EOF")
+            sentbybrain.error("EOF")
             return
         sh.process()
+        sh.clear()
 
 
 if __name__ == "__main__":
