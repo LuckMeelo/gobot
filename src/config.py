@@ -35,8 +35,4 @@ brain_settings = {
     "game_type": 0,
     # bitmask or sum of 1=exactly five in a row win, 2=continuous game, 4=renju
     "rule": 1,
-    # coordinates X,Y representing current position of the mouse cursor
-    "evaluate": (0, 0),
-    # folder for persistent files
-    "folder": None,
 }

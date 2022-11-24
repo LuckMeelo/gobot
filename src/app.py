@@ -11,6 +11,8 @@ from commands import sentbybrain
 def setup() -> None:
     loadBrainInfos()
     sh.on_unknown(sentbybrain.on_unknown)
+    sh.on("TEST", mandatory.test)
+    sh.on("INFO", mandatory.info)
     sh.on("END", mandatory.end)
     sh.on("ABOUT", mandatory.about)
 

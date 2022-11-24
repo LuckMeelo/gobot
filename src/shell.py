@@ -18,12 +18,12 @@ class Shell:
         self.commands[command] = procedure
 
     def getInput(self, case_handle: callable = lambda s: s) -> None:
-        tmp = case_handle(input())
+        tmp = input()
         if (not tmp):
             self.unknown_cmd()
             return
         words = tmp.split()
-        self.currentCmd = words[0]
+        self.currentCmd = case_handle(words[0]) 
         self.currentArgs = words[1:]
 
     def dump(self) -> None:

@@ -11,3 +11,6 @@ class Board:
     def build(self, size: int):
         self.data = [[CellValue.DEFAULT * size] * size]
         self.size = size
+
+    def exists(self) -> bool:
+        return (self.data)
