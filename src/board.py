@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
+from enum import Enum
 
-from config import CellValue
+
+class CellValue(Enum):
+    DEFAULT = 0
+    PLAYED = 0
+    OPPONENT = 2
 
 
 class Board:
@@ -9,8 +14,8 @@ class Board:
         self.size = 0
 
     def build(self, size: int):
-        self.data = [[CellValue.DEFAULT * size] * size]
+        self.data = [[CellValue.DEFAULT for i in range(size)] * size]
         self.size = size
 
-    def exists(self) -> bool:
+    def created(self) -> bool:
         return (self.data)

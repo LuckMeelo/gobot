@@ -1,11 +1,32 @@
 #!/usr/bin/env python3
 
-from config import sh, brainInfos, brain_settings
+from config import sh, brainInfos, brain_settings, bot, MINIMUM_BOARD_SIZE
+from commands import sentbybrain
 
 
 def test() -> None:
     sh.dump()
     print(brain_settings)
+
+
+def start() -> None:
+    if (len(sh.currentArgs) < 1):
+        sentbybrain.error("parameter cant be empty")
+        return
+    if bot.isBoardInitialized():
+        sentbybrain.error("board is already initialized")
+        return
+    invalid = False
+    try:
+        size = int(sh.currentArgs[0])
+        invalid = (size < MINIMUM_BOARD_SIZE)
+    except:
+        invalid = True
+    if (invalid):
+        sentbybrain.error("invalid size")
+    else:
+        bot.initBoard(size)
+        sentbybrain.ok("board initialized")
 
 
 def end() -> None:

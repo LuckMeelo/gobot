@@ -10,3 +10,11 @@ class IBot(ABC):
     @abstractmethod
     def play(self) -> None:
         pass
+
+    @abstractmethod
+    def isBoardInitialized(self) -> bool:
+        pass
+
+    @abstractmethod
+    def initBoard(self, size: int) -> None:
+        pass

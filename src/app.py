@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-from bots.ibot import IBot
-from bots.random.bot import RandomBot
-from config import sh, loadBrainInfos
+from config import sh, loadBrainInfos, bot
 
 from commands import mandatory
 from commands import sentbybrain
@@ -12,6 +10,7 @@ def setup() -> None:
     loadBrainInfos()
     sh.on_unknown(sentbybrain.on_unknown)
     sh.on("TEST", mandatory.test)
+    sh.on("START", mandatory.start)
     sh.on("INFO", mandatory.info)
     sh.on("END", mandatory.end)
     sh.on("ABOUT", mandatory.about)

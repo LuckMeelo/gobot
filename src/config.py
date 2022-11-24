@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 
-from enum import Enum
 from shell import Shell
+from bots.random.bot import RandomBot
+
 import json
 
 sh = Shell()
 brainInfos = dict()
+MINIMUM_BOARD_SIZE = 5
+
+# change Bot here
+bot = RandomBot()
 
 
 def loadBrainInfos() -> None:
@@ -14,12 +19,6 @@ def loadBrainInfos() -> None:
     content = json.load(f)
     for key in content:
         brainInfos[key] = content[key]
-
-
-class CellValue(Enum):
-    DEFAULT = 0
-    PLAYED = 0
-    OPPONENT = 2
 
 
 brain_settings = {
