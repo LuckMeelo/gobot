@@ -4,7 +4,7 @@ from enum import Enum
 
 class CellValue(Enum):
     DEFAULT = 0
-    PLAYED = 0
+    PLAYED = 1
     OPPONENT = 2
 
 
@@ -19,3 +19,12 @@ class Board:
 
     def created(self) -> bool:
         return (self.data)
+
+    def isEmpty(self) -> bool:
+        if not (self.data):
+            return True
+        for i in self.data:
+            for j in i:
+                if j != CellValue.DEFAULT:
+                    return False
+        return True

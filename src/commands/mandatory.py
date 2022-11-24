@@ -9,6 +9,17 @@ def test() -> None:
     print(brain_settings)
 
 
+def begin() -> None:
+    if not bot.isBoardInitialized():
+        sentbybrain.error("board is not initialized")
+        return
+    if not (bot.boardIsEmpty()):
+        sentbybrain.error("game already started")
+        return
+    x, y = bot.begin()
+    sentbybrain.move(x, y)
+
+
 def start() -> None:
     if (len(sh.currentArgs) < 1):
         sentbybrain.error("parameter cant be empty")

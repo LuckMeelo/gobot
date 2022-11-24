@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 
 from abc import ABC, abstractmethod
+from typing import Tuple
 
 
 class IBot(ABC):
     def __init__(self) -> None:
         super().__init__()
+
+    @abstractmethod
+    def begin(self) -> Tuple[int, int]:
+        pass
 
     @abstractmethod
     def play(self) -> None:
@@ -17,4 +22,8 @@ class IBot(ABC):
 
     @abstractmethod
     def initBoard(self, size: int) -> None:
+        pass
+
+    @abstractmethod
+    def boardIsEmpty(self) -> bool:
         pass

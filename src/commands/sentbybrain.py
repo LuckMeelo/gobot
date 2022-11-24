@@ -10,5 +10,8 @@ def message(msg: str) -> None: print("MESSAGE - " + msg)
 def ok(msg: str) -> None: print("OK - " + msg)
 
 
+def move(x: int, y: int) -> None: print(str(x) + "," + str(y))
+
+
 def on_unknown() -> None:
     unknown(sh.currentCmd if sh.currentCmd else "" + " does not exist")
