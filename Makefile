@@ -12,10 +12,7 @@ fclean: clean
 	$(RM) $(NAME)
 
 clean:
-	$(RM) src/__pycache__
-	$(RM) src/bots/__pycache__
-	$(RM) src/commands/__pycache__
-	$(RM) tests/__pycache__
+	$(RM) $(shell find . -type d -name "__pycache__")
 	$(RM) .pytest_cache
 
 re: fclean all
