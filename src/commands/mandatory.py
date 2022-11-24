@@ -2,11 +2,42 @@
 
 from config import sh, brainInfos, brain_settings, bot, MINIMUM_BOARD_SIZE
 from commands import sentbybrain
+from shell import Shell
 
 
 def test() -> None:
     sh.dump()
     print(brain_settings)
+
+
+def board() -> None:
+    if not bot.isBoardInitialized():
+        sentbybrain.error("board is not initialized")
+        return
+    gameAlreadyStarted = (not bot.boardIsEmpty())
+    sh.getInput()
+    while sh.currentCmd != "DONE":
+        try:
+            tmp = [int(i) for i in sh.currentCmd.split(',')]
+            if (len(tmp) != 3):
+                continue
+            try:
+                if (tmp[2] in [1, 2]) and gameAlreadyStarted:
+                    sentbybrain.error("game already started")
+                    return
+                if (tmp[2] == 1):
+                    bot.playWith(tmp[0], tmp[1])
+                if (tmp[2] == 2):
+                    bot.opponentMove(tmp[0], tmp[1])
+            except Exception as e:
+                sentbybrain.error(str(e))
+                return
+        except:
+            pass
+        sh.clear()
+        sh.getInput()
+    botx, boty = bot.play()
+    sentbybrain.move(botx, boty)
 
 
 def turn() -> None:

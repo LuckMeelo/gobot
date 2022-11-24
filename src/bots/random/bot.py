@@ -25,7 +25,7 @@ class RandomBot(IBot):
     def begin(self) -> Tuple[int, int]:
         return self.play()
 
-    def play(self, x: int, y: int) -> Tuple[int, int]:
+    def playWith(self, x: int, y: int) -> Tuple[int, int]:
         if (x >= self.board.size or y >= self.board.size):
             raise Exception("invalid position")
         self.board.data[y][x] = CellValue.PLAYED

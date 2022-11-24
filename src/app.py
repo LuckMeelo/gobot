@@ -11,6 +11,7 @@ def setup() -> None:
     sh.on_unknown(sentbybrain.on_unknown)
     sh.on("TEST", mandatory.test)
     sh.on("TURN", mandatory.turn)
+    sh.on("BOARD", mandatory.board)
     sh.on("BEGIN", mandatory.begin)
     sh.on("START", mandatory.start)
     sh.on("INFO", mandatory.info)

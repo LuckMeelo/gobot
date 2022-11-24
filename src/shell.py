@@ -6,7 +6,7 @@ class Shell:
         self.commands = dict()
         self.currentCmd = None
         self.currentArgs = []
-        self.unknown_cmd = lambda: print("")
+        self.unknown_cmd = lambda: ""
 
     def on_unknown(self, procedure: callable) -> None:
         self.unknown_cmd = procedure
@@ -23,7 +23,7 @@ class Shell:
             self.unknown_cmd()
             return
         words = tmp.split()
-        self.currentCmd = case_handle(words[0]) 
+        self.currentCmd = case_handle(words[0])
         self.currentArgs = words[1:]
 
     def dump(self) -> None:
