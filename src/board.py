@@ -13,8 +13,8 @@ class Board:
         self.data = None
         self.size = 0
 
-    def build(self, size: int):
-        self.data = [[CellValue.DEFAULT for i in range(size)] * size]
+    def build(self, size: int) -> None:
+        self.data = [[CellValue.DEFAULT] * size] * size
         self.size = size
 
     def created(self) -> bool:

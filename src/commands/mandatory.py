@@ -9,6 +9,37 @@ def test() -> None:
     print(brain_settings)
 
 
+def turn() -> None:
+    if not bot.isBoardInitialized():
+        sentbybrain.error("board is not initialized")
+        return
+    if (len(sh.currentArgs) < 1):
+        sentbybrain.error("invalid parameter")
+        return
+    a, b = "", ""
+    if (len(sh.currentArgs) == 1):
+        if (',' in sh.currentArgs[0]):
+            tmp = sh.currentArgs[0].split(',')
+            a, b = tmp[0], tmp[1]
+        else:
+            sentbybrain.error("invalid parameter")
+            return
+    else:
+        a, b = sh.currentArgs[0], sh.currentArgs[1]
+    try:
+        x, y = int(a), int(b)
+        try:
+            bot.opponentMove(x, y)
+        except Exception as e:
+            sentbybrain.error(str(e))
+            return
+    except:
+        sentbybrain.error("invalid parameter")
+        return
+    botx, boty = bot.play()
+    sentbybrain.move(botx, boty)
+
+
 def begin() -> None:
     if not bot.isBoardInitialized():
         sentbybrain.error("board is not initialized")
