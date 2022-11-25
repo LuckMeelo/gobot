@@ -1,2 +1,7 @@
 *__pycache__
 .pytest_cache
+
+build/
+dist/
+pbrain-gomoku-ai.exe
+pbrain-gomoku-ai.exe.spec
