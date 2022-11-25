@@ -99,7 +99,7 @@ def start() -> None:
         sentbybrain.error("invalid size")
     else:
         bot.initBoard(size)
-        sentbybrain.ok("board initialized")
+        sentbybrain.ok()
 
 
 def end() -> None:

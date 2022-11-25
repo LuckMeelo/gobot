@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
-from config import sh, loadBrainInfos, bot
+from config import sh, bot
 
 from commands import mandatory
 from commands import sentbybrain
 
 
 def setup() -> None:
-    loadBrainInfos()
     sh.on_unknown(sentbybrain.on_unknown)
     sh.on("TEST", mandatory.test)
     sh.on("TURN", mandatory.turn)

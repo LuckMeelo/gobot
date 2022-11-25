@@ -6,20 +6,18 @@ from bots.random.bot import RandomBot
 import json
 
 sh = Shell()
-brainInfos = dict()
+
+brainInfos = {
+    "name": "goBot",
+    "version": 1.0,
+    "author": "LuckMeelo",
+    "country": "BJ"
+}
+
 MINIMUM_BOARD_SIZE = 5
 
 # change Bot here
 bot = RandomBot()
-
-
-def loadBrainInfos() -> None:
-    global brainInfos
-    f = open("about.json")
-    content = json.load(f)
-    for key in content:
-        brainInfos[key] = content[key]
-
 
 brain_settings = {
     # time limit for each move (milliseconds, 0=play as fast as possible)
