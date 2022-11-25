@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 from shell import Shell
-from bots.random.bot import RandomBot
-
-import json
+from bots.abot import ABot
 
 sh = Shell()
 
@@ -17,7 +15,7 @@ brainInfos = {
 MINIMUM_BOARD_SIZE = 5
 
 # change Bot here
-bot = RandomBot()
+bot = ABot()
 
 brain_settings = {
     # time limit for each move (milliseconds, 0=play as fast as possible)

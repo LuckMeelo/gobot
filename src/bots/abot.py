@@ -6,7 +6,7 @@ from typing import Tuple
 import random
 
 
-class RandomBot(IBot):
+class ABot(IBot):
     def __init__(self) -> None:
         self.board = Board()
         self.playables = []
