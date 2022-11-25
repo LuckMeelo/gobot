@@ -9,7 +9,15 @@ class IBot(ABC):
         super().__init__()
 
     @abstractmethod
+    def opponentMove(self, x: int, y: int) -> None:
+        pass
+
+    @abstractmethod
     def begin(self) -> Tuple[int, int]:
+        pass
+
+    @abstractmethod
+    def playWith(self, x: int, y: int) -> Tuple[int, int]:
         pass
 
     @abstractmethod
