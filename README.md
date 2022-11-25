@@ -49,12 +49,12 @@ What things you need to install the software and how to install them.
 
 ### Build
 
-- Windows
+- Windows\
   Generate the pbrain-gomoku-ai.exe with
 ```
 python3 compile.py
 ```
-- Linux
+- Linux\
   Generate the pbrain-gomoku-ai binary with
 ```
 make
